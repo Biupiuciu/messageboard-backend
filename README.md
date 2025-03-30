@@ -53,20 +53,20 @@ Here are the available API endpoints:
 
 - POST /messages – Submit a new message
 
-- - Request Body:
+  - Request Body:
 
-```
-{
-  "username": "YourUsername",
-  "message": "Your message content"
-}
-```
+  ```
+  {
+    "username": "YourUsername",
+    "message": "Your message content"
+  }
+  ```
 
 - GET /messages – Get all messages in reverse chronological order
 
-- - Query Parameters:
-- - - page: The page number (defaults to 1 if not provided).
-- - - limit: The number of messages per page (defaults to 5 if not provided).
+  - Query Parameters:
+    - page: The page number (defaults to 1 if not provided).
+    - limit: The number of messages per page (defaults to 5 if not provided).
 
 ## Testing with Postman
 
