@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is a simple Express app built with TypeScript for managing a message board. It allows users to submit messages and view all messages in reverse chronological order. The API provides endpoints for submitting and retrieving messages. The data is stored in-memory.
+This project is a Express app built with TypeScript for managing a message board. It allows users to submit messages and view all messages in reverse chronological order with support for pagination. The API provides endpoints for submitting and retrieving messages. The data is stored in-memory.
 
 ## Tech stacks
 
@@ -64,7 +64,7 @@ Here are the available API endpoints:
 
 - GET /messages – Get all messages in reverse chronological order
 
-  - Query Parameters:
+  - Query Parameters (for pagination.):
     - page: The page number (defaults to 1 if not provided).
     - limit: The number of messages per page (defaults to 5 if not provided).
 
