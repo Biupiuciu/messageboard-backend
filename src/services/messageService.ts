@@ -1,4 +1,4 @@
-import Message from "./Message";
+import Message from "../models/Message";
 class MessageService {
   // local message storage
   private static messages: Message[] = [];

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import messageRouter from "./Message/messageRoute";
+import messageRouter from "./routes/messageRoute";
 
 const router = Router();
 

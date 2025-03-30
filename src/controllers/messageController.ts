@@ -1,11 +1,8 @@
 import { Request, Response } from "express";
-import MessageService from "./messageService";
-import Message from "./Message";
+import MessageService from "../services/messageService";
+import Message from "../models/Message";
 import { HttpStatus } from "../utilis/httpStatus";
 export default class MessageController {
-  private static errorMessage =
-    "An unexpected error occurred. Please try again later.";
-
   // POST /messages
   static async createMessage(req: Request, res: Response): Promise<void> {
     const { username, message } = req.body;
@@ -23,9 +20,12 @@ export default class MessageController {
       const newMessage = MessageService.createMessage(username, message);
       res.status(HttpStatus.CREATED).json({ success: true, data: newMessage });
     } catch (error: any) {
-      res
-        .status(HttpStatus.BAD_REQUEST)
-        .json({ success: false, message: MessageController.errorMessage });
+      console.log(error.message);
+      res.status(HttpStatus.BAD_REQUEST).json({
+        success: false,
+        message:
+          "An unexpected error occurred while creating new message. Please try again later.",
+      });
     }
   }
 
@@ -35,6 +35,7 @@ export default class MessageController {
     const pageNumber = Number(page);
     const limitNumber = Number(limit);
 
+    //validate params
     if (isNaN(pageNumber) || isNaN(limitNumber)) {
       res.status(HttpStatus.BAD_REQUEST).json({
         success: false,
@@ -48,9 +49,12 @@ export default class MessageController {
       const messages = MessageService.getMessages(pageNumber, limitNumber);
       res.status(HttpStatus.OK).json({ success: true, data: messages });
     } catch (error: any) {
-      res
-        .status(HttpStatus.BAD_REQUEST)
-        .json({ success: false, message: MessageController.errorMessage });
+      console.log(error.message);
+      res.status(HttpStatus.BAD_REQUEST).json({
+        success: false,
+        message:
+          "An unexpected error occurred while fetching messages. Please try again later.",
+      });
     }
   }
 }
